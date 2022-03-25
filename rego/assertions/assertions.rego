@@ -15,7 +15,7 @@ assert_equals(expected, result) {
 
 assert_equals(expected, result) = false {
 	expected != result
-	print("expected equals:", expected, "got:", result)
+	print("expected equals:", _quote_if_string(expected), "got:", result)
 }
 
 # METADATA
@@ -26,7 +26,7 @@ assert_not_equals(expected, result) {
 
 assert_not_equals(expected, result) = false {
 	expected == result
-	print("expected not equals:", expected, "got:", result)
+	print("expected not equals:", _quote_if_string(expected), "got:", result)
 }
 
 # METADATA
@@ -37,7 +37,7 @@ assert_in(item, coll) {
 
 assert_in(item, coll) = false {
 	not item in coll
-	print("expected", type_name(item), _quote_if_string(item), "in", type_name(coll), "got", coll)
+	print("expected", type_name(item), _quote_if_string(item), "in", type_name(coll), "got:", coll)
 }
 
 # METADATA
@@ -48,7 +48,7 @@ assert_empty(coll) {
 
 assert_empty(coll) = false {
 	count(coll) != 0
-	print("expected empty", type_name(coll), "got", coll)
+	print("expected empty", type_name(coll), "got:", coll)
 }
 
 # METADATA
