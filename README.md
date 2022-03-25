@@ -1,8 +1,9 @@
 # rego-test-assertions
 
 Tiny Rego library with helper functions for unit testing. The library primarily
-contains various assertion functions, which will print the expected result vs. the
-outcome on failure.
+contains various assertion functions, which will
+[print](https://blog.openpolicyagent.org/introducing-the-opa-print-function-809da6a13aee)
+the expected result vs. the outcome on failure.
 
 ## Functions
 
