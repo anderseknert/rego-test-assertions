@@ -43,19 +43,19 @@ assert_in(item, coll) = false {
 # METADATA
 # description: Assert provided collection is empty, or fail while printing the collection to console
 assert_empty(coll) {
-    count(coll) == 0
+	count(coll) == 0
 }
 
 assert_empty(coll) = false {
-    count(coll) != 0
-    print("expected empty", type_name(coll), "got", coll)
+	count(coll) != 0
+	print("expected empty", type_name(coll), "got", coll)
 }
 
 # METADATA
 # description: Fail with provided message
 fail(msg) {
-    print(msg)
-    false
+	print(msg)
+	false
 }
 
 _quote_if_string(x) = concat("", [`"`, x, `"`]) {

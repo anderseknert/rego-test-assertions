@@ -13,19 +13,19 @@ import data.rego.assertions.assert_equals
 # which is hard to do without.. failures.
 
 test_assert_equals {
-    assert_equals(1, 1)
+	assert_equals(1, 1)
 }
 
 test_assert_equals_fail {
-    assert_equals(1, 2)
+	assert_equals(1, 2)
 }
 
 test_assert_empty {
-    assert_empty([])
-    assert_empty({})
-    assert_empty(set())
+	assert_empty([])
+	assert_empty({})
+	assert_empty(set())
 }
 
 test_assert_empty_fail {
-    assert_empty([1, 2, 3])
+	assert_empty([1, 2, 3])
 }
