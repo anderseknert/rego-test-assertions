@@ -16,12 +16,10 @@ outcome on failure.
 
 ## Example
 
-### Without assertions
+### Policy
 
 ```rego
-package rego.example_test
-
-import future.keywords.in
+package rego.example
 
 deny[msg] {
     msg := "I'll always deny that"
@@ -31,6 +29,16 @@ violation[msg] {
     input.user.name == "banned"
     msg := "You're banned!"
 }
+```
+
+### Test without assertions
+
+```rego
+package rego.example_test
+
+import future.keywords.in
+import data.example.deny
+import data.example.violation
 
 test_empty_without_assertion {
     count(deny) == 0
@@ -51,22 +59,17 @@ data.rego.example_test.test_in_without_assertion: FAIL (99.416µs)
 FAIL: 2/2
 ```
 
-### With assertions
+### Test with assertions
 
 ```rego
 package rego.example_test
 
+import data.example.deny
+import data.example.violation
+
 import data.rego.assertions.assert_empty
 import data.rego.assertions.assert_in
 
-deny[msg] {
-    msg := "I'll always deny that"
-}
-
-violation[msg] {
-    input.user.name == "banned"
-    msg := "You're banned!"
-}
 
 test_empty_with_assertion {
     assert_empty(deny)
