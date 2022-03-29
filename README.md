@@ -1,14 +1,14 @@
 # rego-test-assertions
 
-Tiny [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) library with helper
+Tiny [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) library providing helper
 functions for unit testing. The library primarily contains various assertion functions, which will
 [print](https://blog.openpolicyagent.org/introducing-the-opa-print-function-809da6a13aee)
-the expected result vs. the outcome on failure. This allows you to quickly grasp what went
-wrong in your unit tests, greatly speeding up the test iteration process!
+the expected result vs. the outcome to the console on failure. This allows you to quickly grasp
+what went wrong in your unit tests, greatly speeding up the test iteration process!
 
 ## Functions
 
-In order to use these functions, import the assert package:
+In order to use these functions, import the test.assert package:
 
 ```rego
 import data.test.assert
@@ -86,11 +86,11 @@ import data.rego.assertions.assert_in
 
 
 test_empty_with_assertion {
-    assert_empty(deny)
+    assert.empty(deny)
 }
 
 test_in_with_assertion {
-    assert_in("You're banned!", violation) with input.user.name as "bob"
+    assert.contains("You're banned!", violation) with input.user.name as "bob"
 }
 ```
 
