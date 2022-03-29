@@ -3,61 +3,61 @@
 # authors:
 #   - Anders Eknert <anders@eknert.com>
 #
-package rego.assertions
+package test.assert
 
-import future.keywords.in
+import future.keywords
 
 # METADATA
 # description: Assert expected is equal to result, or fail while printing both inputs to console
-assert_equals(expected, result) {
+equals(expected, result) {
 	expected == result
 }
 
-assert_equals(expected, result) = false {
+equals(expected, result) = false {
 	expected != result
 	print("expected equals:", _quote_if_string(expected), "got:", result)
 }
 
 # METADATA
 # description: Assert expected is not equal to result, or fail while printing both inputs to console
-assert_not_equals(expected, result) {
+not_equals(expected, result) {
 	expected != result
 }
 
-assert_not_equals(expected, result) = false {
+not_equals(expected, result) = false {
 	expected == result
 	print("expected not equals:", _quote_if_string(expected), "got:", result)
 }
 
 # METADATA
 # description: Assert item is in coll, or fail while printing the collection to console
-assert_in(item, coll) {
+contains(item, coll) {
 	item in coll
 }
 
-assert_in(item, coll) = false {
+contains(item, coll) = false {
 	not item in coll
 	print("expected", type_name(item), _quote_if_string(item), "in", type_name(coll), "got:", coll)
 }
 
 # METADATA
 # description: Assert item is not in coll, or fail while printing the collection to console
-assert_not_in(item, coll) {
+not_contains(item, coll) {
 	not item in coll
 }
 
-assert_not_in(item, coll) = false {
+not_contains(item, coll) = false {
 	item in coll
 	print("expected", type_name(item), _quote_if_string(item), "not in", type_name(coll), "got:", coll)
 }
 
 # METADATA
 # description: Assert provided collection is empty, or fail while printing the collection to console
-assert_empty(coll) {
+empty(coll) {
 	count(coll) == 0
 }
 
-assert_empty(coll) = false {
+empty(coll) = false {
 	count(coll) != 0
 	print("expected empty", type_name(coll), "got:", coll)
 }
@@ -76,3 +76,8 @@ _quote_if_string(x) = concat("", [`"`, x, `"`]) {
 _quote_if_string(x) = x {
 	not is_string(x)
 }
+
+# Since we want a function named "in", we're prohibited from using the built-in
+#_member_of(item, coll) {
+
+#}

@@ -8,14 +8,25 @@ wrong in your unit tests, greatly speeding up the test iteration process!
 
 ## Functions
 
-| Function            | Arguments            | Example console output                             |
-|---------------------|----------------------|----------------------------------------------------|
-| `assert_equals`     | `expected`, `result` | expected equals: "foo" got: "bar"                  |
-| `assert_not_equals` | `expected`, `result` | expected not equals: 1 got: 1                      |
-| `assert_in`         | `item`, `coll`       | expected string "foo" in array got: ["bar", "baz"] |
-| `assert_not_in`     | `item`, `coll`       | expected string "foo" not in set got {"foo", "x"}  |
-| `assert_empty`      | `coll`               | expected empty set got: {"admin", "dba"}           |
-| `fail`              | `msg`                | fail with provided message!                        |
+In order to use these functions, import the assert package:
+
+```rego
+import data.test.assert
+```
+
+All functions may now be used like `assert.<function>`. Using the assert package prefix avoids having
+these functions clash with other built-ins and custom functions, and makes it clear in your test code
+what the purpose of these functions is. As an added bonus, you won't need repeated import statements
+to import each function separetely.
+
+| Function              | Arguments            | Example console output                             |
+|-----------------------|----------------------|----------------------------------------------------|
+| `assert.equals`       | `expected`, `result` | expected equals: "foo" got: "bar"                  |
+| `assert.not_equals`   | `expected`, `result` | expected not equals: 1 got: 1                      |
+| `assert.contains`     | `item`, `coll`       | expected string "foo" in array got: ["bar", "baz"] |
+| `assert.not_contains` | `item`, `coll`       | expected string "foo" not in set got {"foo", "x"}  |
+| `assert.empty`        | `coll`               | expected empty set got: {"admin", "dba"}           |
+| `assert.fail`         | `msg`                | fail with provided message!                        |
 
 ## Example
 

@@ -2,8 +2,7 @@ package rego.example_test
 
 import future.keywords.in
 
-import data.rego.assertions.assert_empty
-import data.rego.assertions.assert_in
+import data.test.assert
 
 deny[msg] {
 	msg := "I'll always deny that"
@@ -19,7 +18,7 @@ test_empty_without_assertion {
 }
 
 test_empty_with_assertion {
-	assert_empty(deny)
+	assert.empty(deny)
 }
 
 test_in_without_assertion {
@@ -27,5 +26,5 @@ test_in_without_assertion {
 }
 
 test_in_with_assertion {
-	assert_in("You're banned!", violation) with input.user.name as "bob"
+	assert.contains("You're banned!", violation) with input.user.name as "bob"
 }
