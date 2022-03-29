@@ -13,6 +13,7 @@ wrong in your unit tests, greatly speeding up the test iteration process!
 | `assert_equals`     | `expected`, `result` | expected equals: "foo" got: "bar"                  |
 | `assert_not_equals` | `expected`, `result` | expected not equals: 1 got: 1                      |
 | `assert_in`         | `item`, `coll`       | expected string "foo" in array got: ["bar", "baz"] |
+| `assert_not_in`     | `item`, `coll`       | expected string "foo" not in set got {"foo", "x"}  |
 | `assert_empty`      | `coll`               | expected empty set got: {"admin", "dba"}           |
 | `fail`              | `msg`                | fail with provided message!                        |
 

@@ -41,6 +41,17 @@ assert_in(item, coll) = false {
 }
 
 # METADATA
+# description: Assert item is not in coll, or fail while printing the collection to console
+assert_not_in(item, coll) {
+	not item in coll
+}
+
+assert_not_in(item, coll) = false {
+	item in coll
+	print("expected", type_name(item), _quote_if_string(item), "not in", type_name(coll), "got:", coll)
+}
+
+# METADATA
 # description: Assert provided collection is empty, or fail while printing the collection to console
 assert_empty(coll) {
 	count(coll) == 0
