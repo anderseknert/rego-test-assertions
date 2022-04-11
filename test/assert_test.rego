@@ -28,3 +28,11 @@ test_assert_empty {
 test_assert_empty_fail {
 	assert.empty([1, 2, 3])
 }
+
+test_assert_all_startswith {
+	assert.all_startswith(["a", "abba", "benny"], "a")
+}
+
+test_assert_none_startswith {
+	assert.none_startswith({"a", "b", "c"}, "a")
+}

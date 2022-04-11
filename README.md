@@ -8,7 +8,7 @@ what went wrong in your unit tests, greatly speeding up the test iteration proce
 
 ## Functions
 
-In order to use these functions, import the test.assert package:
+In order to use these functions, import the `test.assert` package:
 
 ```rego
 import data.test.assert
@@ -19,14 +19,17 @@ these functions clash with other built-ins and custom functions, and makes it cl
 what the purpose of these functions is. As an added bonus, you won't need repeated import statements
 to import each function separetely.
 
-| Function              | Arguments            | Example console output                             |
-|-----------------------|----------------------|----------------------------------------------------|
-| `assert.equals`       | `expected`, `result` | expected equals: "foo" got: "bar"                  |
-| `assert.not_equals`   | `expected`, `result` | expected not equals: 1 got: 1                      |
-| `assert.contains`     | `item`, `coll`       | expected string "foo" in array got: ["bar", "baz"] |
-| `assert.not_contains` | `item`, `coll`       | expected string "foo" not in set got {"foo", "x"}  |
-| `assert.empty`        | `coll`               | expected empty set got: {"admin", "dba"}           |
-| `assert.fail`         | `msg`                | fail with provided message!                        |
+| Function                 | Arguments            | Example console output                                   |
+|--------------------------|----------------------|----------------------------------------------------------|
+| `assert.equals`          | `expected`, `result` | expected equals: "foo" got: "bar"                        |
+| `assert.not_equals`      | `expected`, `result` | expected not equals: 1 got: 1                            |
+| `assert.contains`        | `item`, `coll`       | expected string "foo" in array got: ["bar", "baz"]       |
+| `assert.not_contains`    | `item`, `coll`       | expected string "foo" not in set got {"foo", "x"}        |
+| `assert.empty`           | `coll`               | expected empty set got: {"admin", "dba"}                 |
+| `assert.not_empty`       | `coll`               | expected empty array                                     |
+| `assert.all_startswith`  | `coll`, `search`     | expected all strings to start with "a", failed for ["b"] |
+| `assert.none_startswith` | `coll`, `search`     | expected no strings to start with "a", failed for ["a"]  |
+| `assert.fail`            | `msg`                | fail with provided message!                              |
 
 ## Example
 
@@ -51,6 +54,7 @@ violation[msg] {
 package rego.example_test
 
 import future.keywords.in
+
 import data.example.deny
 import data.example.violation
 
@@ -81,9 +85,7 @@ package rego.example_test
 import data.example.deny
 import data.example.violation
 
-import data.rego.assertions.assert_empty
-import data.rego.assertions.assert_in
-
+import data.test.assert
 
 test_empty_with_assertion {
     assert.empty(deny)
