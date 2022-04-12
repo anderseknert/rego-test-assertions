@@ -1,0 +1,19 @@
+name: OPA Check
+
+on: [push]
+
+jobs:
+  opa-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+
+    - name: Setup OPA
+      uses: open-policy-agent/setup-opa@v1
+
+    - name: OPA check strict
+      run: opa check --strict test/
+
+    - name: Check formatting
+      run: opa fmt --diff --fail test/

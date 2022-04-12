@@ -31,7 +31,7 @@ all_equals(coll, value) {
 	}
 } else = false {
 	exceptions := [item | some item in coll; item != value]
-	print("expected all items to have value",  _append_comma(value), "failed for", exceptions)
+	print("expected all items to have value", _append_comma(value), "failed for", exceptions)
 }
 
 # METADATA
@@ -42,7 +42,7 @@ none_equals(coll, value) {
 	}
 } else = false {
 	exceptions := [item | some item in coll; item == value]
-	print("expected no items to have value",  _append_comma(value), "failed for", exceptions)
+	print("expected no items to have value", _append_comma(value), "failed for", exceptions)
 }
 
 # METADATA
