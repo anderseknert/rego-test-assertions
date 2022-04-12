@@ -6,18 +6,27 @@ functions for unit testing. The library primarily contains various assertion fun
 the expected result vs. the outcome to the console on failure. This allows you to quickly grasp
 what went wrong in your unit tests, resulting in a faster test iteration process!
 
-## Functions
+## Usage
 
-In order to use these functions, import the `test.assert` package:
+Simply download the test assertions library and place it somewhere `opa test` checks for policy
+and tests:
+
+```shell
+curl -O https://raw.githubusercontent.com/anderseknert/rego-test-assertions/main/test/assert.rego
+```
+
+In order to use the test assertion functions, import the `test.assert` package:
 
 ```rego
 import data.test.assert
 ```
 
-All functions may now be used like `assert.<function>`. Using the assert package prefix avoids having
-these functions clash with other built-ins and custom functions, and makes it clear in your test code
-what the purpose of these functions is. As an added bonus, you won't need repeated import statements
-to import each function separetely.
+## Functions
+
+Once imported, all functions may now be reference like `assert.<function>`. Using the assert package prefix avoids
+having these functions clash with other built-ins and custom functions, and makes it clear in your test code what
+the purpose of these functions is. As an added bonus, you won't need repeated import statements to import each
+function separetely.
 
 | Function                   | Arguments            | Example console output                                   |
 |----------------------------|----------------------|----------------------------------------------------------|
