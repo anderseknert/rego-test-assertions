@@ -4,7 +4,7 @@ Tiny [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) librar
 functions for unit testing. The library primarily contains various assertion functions, which will
 [print](https://blog.openpolicyagent.org/introducing-the-opa-print-function-809da6a13aee)
 the expected result vs. the outcome to the console on failure. This allows you to quickly grasp
-what went wrong in your unit tests, greatly speeding up the test iteration process!
+what went wrong in your unit tests, resulting in a faster test iteration process!
 
 ## Functions
 
