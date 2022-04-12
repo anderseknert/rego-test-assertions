@@ -12,7 +12,7 @@ import future.keywords
 equals(expected, result) {
 	expected == result
 } else = false {
-	print("expected equals:", _quote_if_string(expected), "got:", result)
+	print("expected equals:", _quote_str(expected), "got:", result)
 }
 
 # METADATA
@@ -20,7 +20,29 @@ equals(expected, result) {
 not_equals(expected, result) {
 	expected != result
 } else = false {
-	print("expected not equals:", _quote_if_string(expected), "got:", result)
+	print("expected not equals:", _quote_str(expected), "got:", result)
+}
+
+# METADATA
+# description: Assert all items in coll are equal to value
+all_equals(coll, value) {
+	every item in coll {
+		item == value
+	}
+} else = false {
+	exceptions := [item | some item in coll; item != value]
+	print("expected all items to have value",  _append_comma(value), "failed for", exceptions)
+}
+
+# METADATA
+# description: Assert no items in coll are equal to value
+none_equals(coll, value) {
+	every item in coll {
+		item != value
+	}
+} else = false {
+	exceptions := [item | some item in coll; item == value]
+	print("expected no items to have value",  _append_comma(value), "failed for", exceptions)
 }
 
 # METADATA
@@ -28,7 +50,7 @@ not_equals(expected, result) {
 contains(item, coll) {
 	item in coll
 } else = false {
-	print("expected", type_name(item), _quote_if_string(item), "in", type_name(coll), "got:", coll)
+	print("expected", type_name(item), _quote_str(item), "in", type_name(coll), "got:", coll)
 }
 
 # METADATA
@@ -36,7 +58,7 @@ contains(item, coll) {
 not_contains(item, coll) {
 	not item in coll
 } else = false {
-	print("expected", type_name(item), _quote_if_string(item), "not in", type_name(coll), "got:", coll)
+	print("expected", type_name(item), _quote_str(item), "not in", type_name(coll), "got:", coll)
 }
 
 # METADATA
@@ -56,25 +78,63 @@ not_empty(coll) {
 }
 
 # METADATA
+# description: Assert string starts with search
+starts_with(str, search) {
+	startswith(str, search)
+} else = false {
+	print("expected", _quote_str(str), "to start with", _quote_str(search))
+}
+
+# METADATA
+# description: Assert string ends with search
+ends_with(str, search) {
+	endswith(str, search)
+} else = false {
+	print("expected", _quote_str(str), "to end with", _quote_str(search))
+}
+
+# METADATA
 # description: Assert all strings in coll starts with search
-all_startswith(coll, search) {
+all_starts_with(coll, search) {
 	every str in coll {
 		startswith(str, search)
 	}
 } else = false {
 	exceptions := [str | some str in coll; not startswith(str, search)]
-	print("expected all strings to start with", concat("", [_quote_if_string(search), ","]), "failed for", exceptions)
+	print("expected all strings to start with", _append_comma(search), "failed for", exceptions)
+}
+
+# METADATA
+# description: Assert all strings in coll ends with search
+all_ends_with(coll, search) {
+	every str in coll {
+		endswith(str, search)
+	}
+} else = false {
+	exceptions := [str | some str in coll; not endswith(str, search)]
+	print("expected all strings to end with", _append_comma(search), "failed for", exceptions)
 }
 
 # METADATA
 # description: Assert no strings in coll starts with search
-none_startswith(coll, search) {
+none_starts_with(coll, search) {
 	every str in coll {
 		not startswith(str, search)
 	}
 } else = false {
 	exceptions := [str | some str in coll; startswith(str, search)]
-	print("expected no strings to start with", concat("", [_quote_if_string(search), ","]), "failed for", exceptions)
+	print("expected no strings to start with", _append_comma(search), "failed for", exceptions)
+}
+
+# METADATA
+# description: Assert no strings in coll ends with search
+none_ends_with(coll, search) {
+	every str in coll {
+		not endswith(str, search)
+	}
+} else = false {
+	exceptions := [str | some str in coll; endswith(str, search)]
+	print("expected no strings to end with", _append_comma(search), "failed for", exceptions)
 }
 
 # METADATA
@@ -84,10 +144,12 @@ fail(msg) {
 	false
 }
 
-_quote_if_string(x) = concat("", [`"`, x, `"`]) {
+_quote_str(x) = concat("", [`"`, x, `"`]) {
 	is_string(x)
 }
 
-_quote_if_string(x) = x {
+_quote_str(x) = x {
 	not is_string(x)
 }
+
+_append_comma(str) = sprintf("%v,", [_quote_str(str)])

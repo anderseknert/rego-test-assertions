@@ -30,9 +30,17 @@ test_assert_empty_fail {
 }
 
 test_assert_all_startswith {
-	assert.all_startswith(["a", "abba", "benny"], "a")
+	assert.all_starts_with(["a", "abba", "benny"], "a")
 }
 
 test_assert_none_startswith {
-	assert.none_startswith({"a", "b", "c"}, "a")
+	assert.none_starts_with({"a", "b", "c"}, "a")
+}
+
+test_assert_all_equals {
+	assert.all_equals([1, 2, 2], 2)
+}
+
+test_assert_none_equals {
+	assert.none_equals([1, 2, 2], 2)
 }
