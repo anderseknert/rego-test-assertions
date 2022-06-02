@@ -10,7 +10,7 @@ what went wrong in your unit tests, resulting in a faster test iteration process
 > Fixed something in ten minutes, while eating a sandwich, I’d previously been poking at for a couple of hours.
 > You’ve made my day!
 
-— Duncan Thomas @ Groupon
+— Duncan Thomas, Groupon
 
 ## Usage
 
@@ -29,7 +29,7 @@ import data.test.assert
 
 ## Functions
 
-Once imported, all functions may now be reference like `assert.<function>`. Using the assert package prefix avoids
+Once imported, all functions may now be referenced like `assert.<function>`. Using the assert package prefix avoids
 having these functions clash with other built-ins and custom functions, and makes it clear in your test code what
 the purpose of these functions is. As an added bonus, you won't need repeated import statements to import each
 function separetely.
