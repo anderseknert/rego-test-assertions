@@ -6,6 +6,12 @@ functions for unit testing. The library primarily contains various assertion fun
 the expected result vs. the outcome to the console on failure. This allows you to quickly grasp
 what went wrong in your unit tests, resulting in a faster test iteration process!
 
+> This assert library is what I’ve been wanting since I started using OPA.
+> Fixed something in ten minutes, while eating a sandwich, I’d previously been poking at for a couple of hours.
+> You’ve made my day!
+
+— Duncan Thomas @ Groupon
+
 ## Usage
 
 Simply download the test assertions library and place it somewhere `opa test` checks for policy
