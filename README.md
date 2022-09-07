@@ -40,8 +40,8 @@ function separetely.
 | `assert.not_equals`        | `expected`, `result` | expected not equals: 1 got: 1                            |
 | `assert.all_equals`        | `coll`, `value`      | expected all items to have value 2, failed for [1]       |
 | `assert.none_equals`       | `coll`, `value`      | expected no items to have value 2, failed for [2, 2]     |
-| `assert.contains`          | `item`, `coll`       | expected string "foo" in array got: ["bar", "baz"]       |
-| `assert.not_contains`      | `item`, `coll`       | expected string "foo" not in set got {"foo", "x"}        |
+| `assert.has`               | `item`, `coll`       | expected string "foo" in array got: ["bar", "baz"]       |
+| `assert.not_has`           | `item`, `coll`       | expected string "foo" not in set got {"foo", "x"}        |
 | `assert.empty`             | `coll`               | expected empty set got: {"admin", "dba"}                 |
 | `assert.not_empty`         | `coll`               | expected empty array                                     |
 | `assert.starts_with`       | `str`, `search`      | expected "test" to start with "a"                        |
@@ -113,7 +113,7 @@ test_empty_with_assertion {
 }
 
 test_in_with_assertion {
-    assert.contains("You're banned!", violation) with input.user.name as "bob"
+    assert.has("You're banned!", violation) with input.user.name as "bob"
 }
 ```
 

@@ -5,13 +5,14 @@
 #
 package test.assert
 
-import future.keywords
+import future.keywords.every
+import future.keywords.in
 
 # METADATA
 # description: Assert expected is equal to result
 equals(expected, result) {
 	expected == result
-} else = false {
+} else := false {
 	print("expected equals:", _quote_str(expected), "got:", result)
 }
 
@@ -19,7 +20,7 @@ equals(expected, result) {
 # description: Assert expected is not equal to result
 not_equals(expected, result) {
 	expected != result
-} else = false {
+} else := false {
 	print("expected not equals:", _quote_str(expected), "got:", result)
 }
 
@@ -29,7 +30,7 @@ all_equals(coll, value) {
 	every item in coll {
 		item == value
 	}
-} else = false {
+} else := false {
 	exceptions := [item | some item in coll; item != value]
 	print("expected all items to have value", _append_comma(value), "failed for", exceptions)
 }
@@ -40,24 +41,24 @@ none_equals(coll, value) {
 	every item in coll {
 		item != value
 	}
-} else = false {
+} else := false {
 	exceptions := [item | some item in coll; item == value]
 	print("expected no items to have value", _append_comma(value), "failed for", exceptions)
 }
 
 # METADATA
 # description: Assert item is in coll
-contains(item, coll) {
+has(item, coll) {
 	item in coll
-} else = false {
+} else := false {
 	print("expected", type_name(item), _quote_str(item), "in", type_name(coll), "got:", coll)
 }
 
 # METADATA
 # description: Assert item is not in coll
-not_contains(item, coll) {
+not_has(item, coll) {
 	not item in coll
-} else = false {
+} else := false {
 	print("expected", type_name(item), _quote_str(item), "not in", type_name(coll), "got:", coll)
 }
 
@@ -65,7 +66,7 @@ not_contains(item, coll) {
 # description: Assert provided collection is empty
 empty(coll) {
 	count(coll) == 0
-} else = false {
+} else := false {
 	print("expected empty", type_name(coll), "got:", coll)
 }
 
@@ -73,7 +74,7 @@ empty(coll) {
 # description: Assert provided collection is not empty
 not_empty(coll) {
 	count(coll) != 0
-} else = false {
+} else := false {
 	print("expected not empty", type_name(coll))
 }
 
@@ -81,7 +82,7 @@ not_empty(coll) {
 # description: Assert string starts with search
 starts_with(str, search) {
 	startswith(str, search)
-} else = false {
+} else := false {
 	print("expected", _quote_str(str), "to start with", _quote_str(search))
 }
 
@@ -89,7 +90,7 @@ starts_with(str, search) {
 # description: Assert string ends with search
 ends_with(str, search) {
 	endswith(str, search)
-} else = false {
+} else := false {
 	print("expected", _quote_str(str), "to end with", _quote_str(search))
 }
 
@@ -99,7 +100,7 @@ all_starts_with(coll, search) {
 	every str in coll {
 		startswith(str, search)
 	}
-} else = false {
+} else := false {
 	exceptions := [str | some str in coll; not startswith(str, search)]
 	print("expected all strings to start with", _append_comma(search), "failed for", exceptions)
 }
@@ -110,7 +111,7 @@ all_ends_with(coll, search) {
 	every str in coll {
 		endswith(str, search)
 	}
-} else = false {
+} else := false {
 	exceptions := [str | some str in coll; not endswith(str, search)]
 	print("expected all strings to end with", _append_comma(search), "failed for", exceptions)
 }
@@ -121,7 +122,7 @@ none_starts_with(coll, search) {
 	every str in coll {
 		not startswith(str, search)
 	}
-} else = false {
+} else := false {
 	exceptions := [str | some str in coll; startswith(str, search)]
 	print("expected no strings to start with", _append_comma(search), "failed for", exceptions)
 }
@@ -132,7 +133,7 @@ none_ends_with(coll, search) {
 	every str in coll {
 		not endswith(str, search)
 	}
-} else = false {
+} else := false {
 	exceptions := [str | some str in coll; endswith(str, search)]
 	print("expected no strings to end with", _append_comma(search), "failed for", exceptions)
 }
@@ -144,12 +145,12 @@ fail(msg) {
 	false
 }
 
-_quote_str(x) = concat("", [`"`, x, `"`]) {
+_quote_str(x) := concat("", [`"`, x, `"`]) {
 	is_string(x)
 }
 
-_quote_str(x) = x {
+_quote_str(x) := x {
 	not is_string(x)
 }
 
-_append_comma(str) = sprintf("%v,", [_quote_str(str)])
+_append_comma(str) := sprintf("%v,", [_quote_str(str)])
