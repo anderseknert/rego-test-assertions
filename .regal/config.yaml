@@ -1,0 +1,7 @@
+rules:
+  idiomatic:
+    no-defined-entrypoint:
+      level: ignore
+  testing:
+    print-or-trace-call:
+      level: ignore
