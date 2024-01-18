@@ -14,17 +14,15 @@ what went wrong in your unit tests, resulting in a faster test iteration process
 
 ## Usage
 
-Simply download the test assertions library and place it somewhere `opa test` checks for policy
-and tests:
-
-```shell
-curl -O https://raw.githubusercontent.com/anderseknert/rego-test-assertions/main/test/assert.rego
-```
+Simply download the test assertions library
+[policy file](https://raw.githubusercontent.com/anderseknert/rego-test-assertions/main/test/assert.rego)
+and place it somewhere `opa test` checks for policy and tests:
 
 Alternatively, use [ODM](https://github.com/johanfylling/opa-dependency-manager) to add the library to your project:
 
 ```shell
-odm depend rego-test-assertions --no-namespace git+https://github.com/anderseknert/rego-test-assertions
+odm depend rego-test-assertions --no-namespace \
+    git+https://github.com/anderseknert/rego-test-assertions
 ```
 
 In order to use the test assertion functions, import the `test.assert` package:
