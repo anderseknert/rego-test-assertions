@@ -21,6 +21,12 @@ and tests:
 curl -O https://raw.githubusercontent.com/anderseknert/rego-test-assertions/main/test/assert.rego
 ```
 
+Alternatively, use [ODM](https://github.com/johanfylling/opa-dependency-manager) to add the library to your project:
+
+```shell
+odm depend rego-test-assertions --no-namespace git+https://github.com/anderseknert/rego-test-assertions
+```
+
 In order to use the test assertion functions, import the `test.assert` package:
 
 ```rego

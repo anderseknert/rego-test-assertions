@@ -5,9 +5,7 @@
 #
 package test.assert
 
-import future.keywords.every
-import future.keywords.if
-import future.keywords.in
+import rego.v1
 
 # METADATA
 # description: Assert expected is equal to result
@@ -141,12 +139,7 @@ none_ends_with(coll, search) if {
 
 # METADATA
 # description: Fail with provided message
-fail(msg) if {
-	print(msg)
-
-	# regal ignore:constant-condition
-	false
-}
+fail(msg) := [][0] if print(msg)
 
 _quote_str(x) := concat("", [`"`, x, `"`]) if is_string(x)
 
