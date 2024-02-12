@@ -19,7 +19,7 @@ jobs:
       run: opa test --coverage --threshold 100 test/
 
     - name: Setup Regal
-      uses: StyraInc/setup-regal@v0.2.0
+      uses: StyraInc/setup-regal@v1
       with:
         version: latest
     - run: regal lint --format github test/
