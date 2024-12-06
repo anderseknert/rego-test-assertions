@@ -12,6 +12,11 @@ what went wrong in your unit tests, resulting in a faster test iteration process
 
 — Duncan Thomas, Groupon
 
+Note that since OPA [v0.66.0](https://github.com/open-policy-agent/opa/releases/tag/v0.66.0), the `opa test` command
+has built-in support for printing variable bindings for failed test assertions when run with the `--var-values` flag,
+which can be used as an alternative to this library if your goal is only to see what variable values were bound when
+a test failed.
+
 ## Usage
 
 Simply download the test assertions library
