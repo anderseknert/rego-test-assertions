@@ -57,6 +57,38 @@ test_assert_not_has_fail if {
 	not assert.not_has(2, [1, 2, 3])
 }
 
+test_assert_has_key if {
+	assert.has_key("two", {"one": 1, "two": 2, "three": 3})
+}
+
+test_assert_has_key_fail if {
+	not assert.has_key("four", {"one": 1, "two": 2, "three": 3})
+}
+
+test_assert_not_has_key if {
+	assert.not_has_key("four", {"one": 1, "two": 2, "three": 3})
+}
+
+test_assert_not_has_key_fail if {
+	not assert.not_has_key("two", {"one": 1, "two": 2, "three": 3})
+}
+
+test_assert_has_value if {
+	assert.has_value(2, {"one": 1, "two": 2, "three": 3})
+}
+
+test_assert_has_value_fail if {
+	not assert.has_value(4, {"one": 1, "two": 2, "three": 3})
+}
+
+test_assert_not_has_value if {
+	assert.not_has_value(4, {"one": 1, "two": 2, "three": 3})
+}
+
+test_assert_not_has_value_fail if {
+	not assert.not_has_value(2, {"one": 1, "two": 2, "three": 3})
+}
+
 test_assert_empty if {
 	assert.empty([])
 	assert.empty({})
