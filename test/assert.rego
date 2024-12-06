@@ -62,6 +62,24 @@ not_has(item, coll) if {
 }
 
 # METADATA
+# description: Assert key is in obj
+has_key(key, obj) if {
+	some keys, _ in obj
+	key == keys
+} else := false if {
+	print("expected", type_name(key), _quote_str(key), "in", type_name(obj), "got:", obj)
+}
+
+# METADATA
+# description: Assert key is not in obj
+not_has_key(key, obj) := false if {
+	some keys, _ in obj
+	key == keys
+} else if {
+	print("expected", type_name(key), _quote_str(key), "not in", type_name(obj), "got:", obj)
+}
+
+# METADATA
 # description: Assert provided collection is empty
 empty(coll) if {
 	count(coll) == 0
