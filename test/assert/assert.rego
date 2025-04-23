@@ -82,7 +82,7 @@ not_has_key(key, obj) := false if {
 # METADATA
 # description: Assert value is in obj
 has_value(value, obj) if {
-	some _, values in obj
+	some values in obj
 	value == values
 } else := false if {
 	print("expected", type_name(value), _quote_str(value), "in", type_name(obj), "got:", obj)
@@ -91,7 +91,7 @@ has_value(value, obj) if {
 # METADATA
 # description: Assert value is not in obj
 not_has_value(value, obj) := false if {
-	some _, values in obj
+	some values in obj
 	value == values
 } else if {
 	print("expected", type_name(value), _quote_str(value), "not in", type_name(obj), "got:", obj)
